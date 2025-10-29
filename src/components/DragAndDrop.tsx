@@ -40,7 +40,7 @@ export default function DragDropOnly() {
   };
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-lg ">
       <div
         onDrop={onDrop}
         onDragOver={onDragOver}
@@ -53,10 +53,11 @@ export default function DragDropOnly() {
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-gray-700">
-              Drop <code className="font-mono">.stl</code> files here
-            </p>
-            <label className="inline-block mt-2 cursor-pointer text-sky-600 underline">
+            <span className="text-gray-700">
+              Перенесіть <code className="font-mono">.stl</code> файли сюди
+              &nbsp;
+            </span>
+            <label className="mt-2 cursor-pointer text-sky-600 underline">
               <input
                 accept=".stl"
                 type="file"
@@ -64,11 +65,8 @@ export default function DragDropOnly() {
                 className="hidden"
                 onChange={onFileInputChange}
               />
-              or choose files
+              або оберіть з комп'ютера
             </label>
-          </div>
-          <div className="text-sm text-gray-500">
-            Supported: .stl (ASCII & binary)
           </div>
         </div>
       </div>

@@ -1,10 +1,9 @@
+import { roundTo } from "@/utils/roundTo";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { addStlFilesAsync } from "./thunks";
 import { STLFile } from "./types";
 
-type STLFilesState = STLFile[];
-
-const initialState: STLFilesState = [];
+const initialState: STLFile[] = [];
 
 const stlFilesSlice = createSlice({
   name: "stl-files",
@@ -12,6 +11,42 @@ const stlFilesSlice = createSlice({
   reducers: {
     removeStlFile: (state, action: PayloadAction<string>) => {
       return state.filter((file) => file.name !== action.payload);
+    },
+    incrementQuantity: (state, action: PayloadAction<string>) => {
+      return state.map((file) => {
+        if (file.name === action.payload)
+          return { ...file, quantity: file.quantity + 1 };
+        return file;
+      });
+    },
+    decrementQuantity: (state, action: PayloadAction<string>) => {
+      return state.map((file) => {
+        if (file.name === action.payload)
+          return { ...file, quantity: file.quantity - 1 };
+        return file;
+      });
+    },
+    setQuantity: (
+      state,
+      action: PayloadAction<{ name: string; quantity: number }>
+    ) =>
+      state.map((file) => {
+        if (file.name === action.payload.name) {
+          console.log(state);
+          return { ...file, quantity: action.payload.quantity };
+        }
+        return file;
+      }),
+
+    setIncludePaint: (
+      state,
+      action: PayloadAction<{ name: string; includePaint: boolean }>
+    ) => {
+      return state.map((file) => {
+        if (file.name === action.payload.name)
+          return { ...file, includePaint: action.payload.includePaint, price: roundTo(action.payload.includePaint ? file.price * 1.1 : file.price / 1.1) };
+        return file;
+      });
     },
   },
   extraReducers: (builder) => {
@@ -28,5 +63,11 @@ const stlFilesSlice = createSlice({
   },
 });
 
-export const { removeStlFile } = stlFilesSlice.actions;
+export const {
+  removeStlFile,
+  incrementQuantity,
+  decrementQuantity,
+  setIncludePaint,
+  setQuantity,
+} = stlFilesSlice.actions;
 export default stlFilesSlice.reducer;
