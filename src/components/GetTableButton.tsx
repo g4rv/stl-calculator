@@ -188,7 +188,7 @@ const GetTableButton = () => {
       onClick={handleClick}
       disabled={files.length === 0}
       className={cn(
-        "bg-green-600 py-2 px-4 h-min rounded-full text-white not-disabled:cursor-pointer disabled:bg-gray-300 duration-300"
+        "bg-[rgb(70,170,80)] py-2 px-4 h-min rounded-full text-white not-disabled:cursor-pointer disabled:bg-gray-300 duration-300"
       )}
     >
       Вивантижити .EXCEL

@@ -65,7 +65,7 @@ export default function DragDropOnly() {
                 className="hidden"
                 onChange={onFileInputChange}
               />
-              або оберіть з комп'ютера
+              або оберіть з комп&apos;ютера
             </label>
           </div>
         </div>

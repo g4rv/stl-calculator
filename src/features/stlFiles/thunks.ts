@@ -10,7 +10,7 @@ export const addStlFilesAsync = createAsyncThunk<STLFile[], File[]>(
       files.map(async (file) => {
         const grams = await getGrammsFromSTL(file);
         return {
-          name: file.name.replace(/\.stl/gi, ""),
+          name: file.name.replace(/\.stl/gi, "").replace(/\_/g, " "),
           URL: URL.createObjectURL(file),
           modelWeight: roundTo(grams),
           quantity: 1,

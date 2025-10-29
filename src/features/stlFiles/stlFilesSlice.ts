@@ -15,14 +15,14 @@ const stlFilesSlice = createSlice({
     incrementQuantity: (state, action: PayloadAction<string>) => {
       return state.map((file) => {
         if (file.name === action.payload)
-          return { ...file, quantity: file.quantity + 1 };
+          return { ...file, quantity: Math.min(file.quantity + 1, 99999) };
         return file;
       });
     },
     decrementQuantity: (state, action: PayloadAction<string>) => {
       return state.map((file) => {
         if (file.name === action.payload)
-          return { ...file, quantity: file.quantity - 1 };
+          return { ...file, quantity: Math.max(file.quantity - 1, 1) };
         return file;
       });
     },
@@ -44,7 +44,13 @@ const stlFilesSlice = createSlice({
     ) => {
       return state.map((file) => {
         if (file.name === action.payload.name)
-          return { ...file, includePaint: action.payload.includePaint, price: roundTo(action.payload.includePaint ? file.price * 1.1 : file.price / 1.1) };
+          return {
+            ...file,
+            includePaint: action.payload.includePaint,
+            price: roundTo(
+              action.payload.includePaint ? file.price * 1.1 : file.price / 1.1
+            ),
+          };
         return file;
       });
     },

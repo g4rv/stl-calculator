@@ -1,4 +1,5 @@
 import { RootState } from "@/lib/store";
+import { roundTo } from "@/utils/roundTo";
 import { createSelector } from "@reduxjs/toolkit";
 import { STLFile } from "./types";
 
@@ -7,5 +8,12 @@ export const selectStlFiles = (state: RootState): STLFile[] => state.stlFiles;
 
 // Total price (memoized)
 export const selectTotalPrice = createSelector([selectStlFiles], (files) =>
-  files.reduce((sum, file) => sum + file.price, 0)
+  files.reduce((sum, file) => sum + roundTo(file.price * file.quantity), 0)
+);
+
+export const selectTotalWeight = createSelector([selectStlFiles], (files) =>
+  files.reduce(
+    (sum, file) => sum + roundTo(file.modelWeight * file.quantity),
+    0
+  )
 );

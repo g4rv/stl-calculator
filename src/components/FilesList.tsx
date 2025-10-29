@@ -7,37 +7,12 @@ const FilesList = () => {
   const files = useAppSelector((state) => state.stlFiles);
 
   return (
-    <ul className="flex flex-wrap gap-6 container mx-auto">
+    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center  auto-rows-fr">
       {files.map((file) => (
-        <li key={file.URL} className="h-auto max-w-[330px] w-full">
+        <li key={file.URL} className="h-full max-w-[330px] w-full">
           <FileCard file={file} />
         </li>
       ))}
-
-      {/* <li className="h-full">
-        <FileCard
-          file={{
-            includePaint: false,
-            modelWeight: 0,
-            name: "test",
-            price: 0,
-            quantity: 1,
-            URL: "/test.STL",
-          }}
-        />
-      </li>
-      <li className="h-full">
-        <FileCard
-          file={{
-            includePaint: false,
-            modelWeight: 0,
-            name: "test2",
-            price: 0,
-            quantity: 1,
-            URL: "/test2.STL",
-          }}
-        />
-      </li> */}
     </ul>
   );
 };
