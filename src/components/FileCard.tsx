@@ -61,10 +61,20 @@ const FileCard: FC<Props> = ({ file }) => {
           </p>
           <p>Ціна/од: {file.price.toLocaleString("uk-UA")} грн</p>
           <p>Вага/од: {file.modelWeight.toLocaleString("uk-UA")} г</p>
-          <p>
+          <label className="flex items-center gap-4 cursor-pointer">
             Фарбувати:
+            <span
+              className={cn(
+                "inline-block border-2 rounded-sm size-5 leading-0 relative",
+                file.includePaint &&
+                  "before:block before:absolute before:-rotate-45 before:top-1.5 before:my-auto before:left-[3px] before:bg-white before:w-0.5 before:h-2",
+                file.includePaint &&
+                  "after:block after:absolute after:-rotate-45 after:top-1.5 after:left-[3px] after:bg-white after:h-0.5 after:w-4"
+              )}
+            ></span>
             <input
               type="checkbox"
+              className="hidden"
               checked={file.includePaint}
               onChange={(e) =>
                 dispatch(
@@ -75,7 +85,7 @@ const FileCard: FC<Props> = ({ file }) => {
                 )
               }
             />
-          </p>
+          </label>
         </div>
 
         <div className="flex justify-center gap-4 items-center mt-auto">
