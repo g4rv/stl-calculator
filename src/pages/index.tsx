@@ -17,9 +17,13 @@ export default function Home() {
     <div className="custom-container pb-16 pt-8">
       <div className="flex justify-between flex-col gap-8 xl:flex-row items-center mb-10">
         <DragDropOnly />
-        <div className="flex grow text-black gap-8">
-          <div className="grow">Загальна вага: {totalWeight.toLocaleString("uk-UA")} г</div>
-          <div className="grow">Загальна сумма: {totalPrice.toLocaleString("uk-UA")} грн</div>
+        <div className="flex grow text-black gap-8 flex-col md:flex-row">
+          <div className="grow">
+            Загальна вага: {totalWeight.toLocaleString("uk-UA")} г
+          </div>
+          <div className="grow">
+            Загальна сумма: {totalPrice.toLocaleString("uk-UA")} грн
+          </div>
         </div>
         <GetTableButton />
       </div>
