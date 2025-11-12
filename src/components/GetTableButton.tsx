@@ -5,7 +5,7 @@ import cn from "@/utils/cn";
 import * as XLSX from "xlsx-js-style";
 
 const GetTableButton = () => {
-  const files = useAppSelector((state) => state.stlFiles);
+  const files = useAppSelector((state) => state.stlFiles.files);
 
   const handleClick = () => {
     function exportToExcel() {

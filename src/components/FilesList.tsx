@@ -4,7 +4,7 @@ import { useAppSelector } from "@/lib/hooks";
 import FileCard from "./FileCard";
 
 const FilesList = () => {
-  const files = useAppSelector((state) => state.stlFiles);
+  const files = useAppSelector((state) => state.stlFiles.files);
 
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center  auto-rows-fr">
